@@ -16,17 +16,15 @@ debugLogStart();
 //================================
 // GETパラメータを取得
 //----------------------------------
-// カレントページ
-$currentPageNum1 = (!empty($_GET['p'])) ? $_GET['p'] : 1; //デフォルトは１ページ目
+/// カレントページ
+$currentPageNum = (!empty($_GET['p'])) ? $_GET['p'] : 1; //デフォルトは１ページ目
 // カテゴリー
 $category = (!empty($_GET['c_id'])) ? $_GET['c_id'] : '';
 // ソート順
 $sort = (!empty($_GET['sort'])) ? $_GET['sort'] : '';
 
-$fmt = numfmt_create( 'de_DE', NumberFormatter::DECIMAL );
-$currentPageNum = numfmt_parse($fmt, $currentPageNum1, NumberFormatter::TYPE_INT32);
 //パラメータに不正な値が入っているのかチェック
-if($currentPageNum === false){
+if(is_numeric($currentPageNum) == false){
     error_log('エラー発生：指定ページに不正な値が入りました');
     header("Location:index.php");//トップページへ
 }
