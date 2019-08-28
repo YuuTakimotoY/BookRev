@@ -55,7 +55,7 @@ if(!empty($_POST)){
                     $auth_key = makeRandKey(); //認証キー生成
                     
                     //メールを送信
-                    $from = 'info@webukatu.com';
+                    $from = 'info@BookRev.com';
                     $to = $email;
                     $subject = '【パスワード再発行認証】｜BookRev';
                     //EOTはEndOfFileの略。ABCでもなんでもいい。先頭の<<<の後の文字列と合わせること。最後のEOTの前後に空白など何も入れてはいけない。
