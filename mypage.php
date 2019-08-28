@@ -88,7 +88,7 @@ require('head.php');
             </style>
             <section class="list list-table">
                 <h2 class="title">
-                    レビュー本掲示板一覧
+                    登録レビュー本掲示板一覧
                 </h2>
                 <table class="table">
                     <thead>
