@@ -604,7 +604,7 @@ function getMyLike($u_id){
 //================================
 // メール送信
 //================================
-function sendMail($from, $to, $subject, $comment,$username){
+function sendMail($from, $to, $subject, $comment,$username=''){
   if(!empty($to) && !empty($subject) && !empty($comment)){
     require 'vendor/autoload.php';
     $email = new \SendGrid\Mail\Mail();

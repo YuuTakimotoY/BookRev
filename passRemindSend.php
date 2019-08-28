@@ -77,7 +77,7 @@ URL  https://guarded-harbor-58745.herokuapp.com/
 E-mail info@BookRev.com
 ////////////////////////////////////////
 EOT;
-                    sendMail($from, $to, $subject, $comment,'');
+                    sendMail($from, $to, $subject, $comment);
                             
                     //認証に必要な情報をセッションへ保存
                     $_SESSION['auth_key'] = $auth_key;
