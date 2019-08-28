@@ -18,10 +18,6 @@ if(empty($_SESSION['auth_key'])){
 //================================
 // 画面処理
 //================================
-// DBからユーザーデータを取得
-$userData = getUser($_SESSION['user_id']);
-debug('取得したユーザー情報：'.print_r($userData,true));
-
 //post送信されていた場合
 if(!empty($_POST)){
     debug('POST送信があります。');
