@@ -610,7 +610,7 @@ function sendMail($from, $to, $subject, $comment,$username=''){
     $email = new \SendGrid\Mail\Mail();
     $email->setFrom($from, "BookRevカスタマセンター");
     $email->setSubject($subject);
-    $email->addTo($from, ($username) ? $username : '名無し');
+    $email->addTo($to, ($username) ? $username : '名無し');
     $email->addContent("text/plain", $comment);
     $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
     try {
