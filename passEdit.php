@@ -71,9 +71,9 @@ if(!empty($_POST)){
                     $_SESSION['msg_success'] = SUC01;
                 //メールを送信
                 $username = ($userData['username']) ? $userData['username'] : '名無し';
-                $from = 'info@BOOKREV.com';
+                $from = 'info@BookRev.com';
                 $to = $userData['email'];
-                $subject = 'パスワード変更通知｜BOOKREV';
+                $subject = 'パスワード変更通知｜BookRev';
                 //EOTはEndOfFileの略。ABCでもなんでもいい。先頭の<<<の後の文字列と合わせること。最後のEOTの前後に空白など何も入れてはいけない。
                 //EOT内の半角空白も全てそのまま半角空白として扱われるのでインデントはしないこと
                 $comment = <<<EOT
