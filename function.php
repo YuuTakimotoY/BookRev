@@ -341,7 +341,7 @@ function getProductList($currentMinNum = 1,$category,$sort,$span = 20){
         $dbh = dbConnect();
         // 件数用のSQL文作成
         $sql = 'SELECT id FROM product';
-        if(!empty($category)) $sql .= ' WHERE category_id = '.$category;
+        if(!empty($category)) $sql .= ' WHERE category_id = '.$category.' AND delete_flg = 0';
         if(!empty($sort)){
             switch($sort){
                 case 1:
@@ -363,7 +363,7 @@ function getProductList($currentMinNum = 1,$category,$sort,$span = 20){
 
         // ページング用のSQL文作成
         $sql = 'SELECT * FROM product';
-        if(!empty($category)) $sql .= ' WHERE category_id = '.$category;
+        if(!empty($category)) $sql .= ' WHERE category_id = '.$category.' AND delete_flg = 0';
         if(!empty($sort)){
         switch($sort){
             case 1:
