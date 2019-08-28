@@ -18,6 +18,10 @@ if(empty($_SESSION['auth_key'])){
 //================================
 // 画面処理
 //================================
+// DBからユーザーデータを取得
+$userData = getUser($_SESSION['user_id']);
+debug('取得したユーザー情報：'.print_r($userData,true));
+
 //post送信されていた場合
 if(!empty($_POST)){
     debug('POST送信があります。');
@@ -64,26 +68,26 @@ if(!empty($_POST)){
                         debug('クエリ成功。');
 
                         //メールを送信
-                    $from = 'info@webukatu.com';
-                    $to = $_SESSION['auth_email'];
-                    $subject = '【パスワード再発行完了】｜BookRev';
-                    //EOTはEndOfFileの略。ABCでもなんでもいい。先頭の<<<の後の文字列と合わせること。最後のEOTの前後に空白など何も入れてはいけない。
-                    //EOT内の半角空白も全てそのまま半角空白として扱われるのでインデントはしないこと
-                    $comment = <<<EOT
+                        $from = 'info@BookRev.com';
+                        $to = $_SESSION['auth_email'];
+                        $subject = '【パスワード再発行完了】｜BookRev';
+                        //EOTはEndOfFileの略。ABCでもなんでもいい。先頭の<<<の後の文字列と合わせること。最後のEOTの前後に空白など何も入れてはいけない。
+                        //EOT内の半角空白も全てそのまま半角空白として扱われるのでインデントはしないこと
+                        $comment = <<<EOT
 本メールアドレス宛にパスワードの再発行を致しました。
 下記のURLにて再発行パスワードをご入力頂き、ログインください。
 
-ログインページ：http://localhost:8888/BookRev/login.php
+ログインページ：https://guarded-harbor-58745.herokuapp.com/login.php
 再発行パスワード：{$pass}
 ※ログイン後、パスワードのご変更をお願い致します
 
 ////////////////////////////////////////
-ウェブカツマーケットカスタマーセンター
-URL  http://bookRev.com/
+BookRevカスタマーセンター
+URL  https://guarded-harbor-58745.herokuapp.com
 E-mail info@BookRev.com
 ////////////////////////////////////////
 EOT;
-            sendMail($from, $to, $subject, $comment);
+            sendMail($from, $to, $subject, $comment,'');
 
             //セッション削除
             session_unset();

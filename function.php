@@ -604,20 +604,23 @@ function getMyLike($u_id){
 //================================
 // メール送信
 //================================
-function sendMail($from, $to, $subject, $comment){
+function sendMail($from, $to, $subject, $comment,$username){
   if(!empty($to) && !empty($subject) && !empty($comment)){
-      //文字化けしないように設定（お決まりパターン）
-      mb_language("Japanese"); //現在使っている言語を設定する
-      mb_internal_encoding("UTF-8"); //内部の日本語をどうエンコーディング（機械が分かる言葉へ変換）するかを設定
-      
-      //メールを送信（送信結果はtrueかfalseで返ってくる）
-      $result = mb_send_mail($to, $subject, $comment, "From: ".$from);
-      //送信結果を判定
-      if ($result) {
-        debug('メールを送信しました。');
-      } else {
-        debug('【エラー発生】メールの送信に失敗しました。');
-      }
+    require 'vendor/autoload.php';
+    $email = new \SendGrid\Mail\Mail();
+    $email->setFrom($from, "BookRevカスタマセンター");
+    $email->setSubject($subject);
+    $email->addTo($from, ($username) ? $username : '名無し');
+    $email->addContent("text/plain", $comment);
+    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+    try {
+        $response = $sendgrid->send($email);
+        print $response->statusCode() . "\n";
+        print_r($response->headers());
+        print $response->body() . "\n";
+    } catch (Exception $e) {
+        echo 'Caught exception: '. $e->getMessage() ."\n";
+    }
   }
 }
 

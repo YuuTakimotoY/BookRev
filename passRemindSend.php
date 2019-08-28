@@ -57,27 +57,27 @@ if(!empty($_POST)){
                     //メールを送信
                     $from = 'info@webukatu.com';
                     $to = $email;
-                    $subject = '【パスワード再発行認証】｜WEBUKATUMARKET';
+                    $subject = '【パスワード再発行認証】｜BookRev';
                     //EOTはEndOfFileの略。ABCでもなんでもいい。先頭の<<<の後の文字列と合わせること。最後のEOTの前後に空白など何も入れてはいけない。
                     //EOT内の半角空白も全てそのまま半角空白として扱われるのでインデントはしないこと
                     $comment = <<<EOT
 本メールアドレス宛にパスワード再発行のご依頼がありました。
 下記のURLにて認証キーをご入力頂くとパスワードが再発行されます。
 
-パスワード再発行認証キー入力ページ：http://localhost:8888/BookRev/passRemindRecieve.php
+パスワード再発行認証キー入力ページ：https://guarded-harbor-58745.herokuapp.com/passRemindRecieve.php
 認証キー：{$auth_key}
 ※認証キーの有効期限は30分となります
 
 認証キーを再発行されたい場合は下記ページより再度再発行をお願い致します。
-http://localhost:8888/BookRev/passRemindSend.php
+https://guarded-harbor-58745.herokuapp.com/passRemindSend.php
 
 ////////////////////////////////////////
 BookRevカスタマーセンター
-URL  http://BookRev.com/
+URL  https://guarded-harbor-58745.herokuapp.com/
 E-mail info@BookRev.com
 ////////////////////////////////////////
 EOT;
-                    sendMail($from, $to, $subject, $comment);
+                    sendMail($from, $to, $subject, $comment,'');
                             
                     //認証に必要な情報をセッションへ保存
                     $_SESSION['auth_key'] = $auth_key;

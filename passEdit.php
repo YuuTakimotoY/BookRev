@@ -69,7 +69,7 @@ if(!empty($_POST)){
                 //クエリ成功の場合
                 if($stmt){
                     $_SESSION['msg_success'] = SUC01;
-                    //メールを送信
+                //メールを送信
                 $username = ($userData['username']) ? $userData['username'] : '名無し';
                 $from = 'info@BOOKREV.com';
                 $to = $userData['email'];
@@ -82,9 +82,11 @@ if(!empty($_POST)){
                     
 ////////////////////////////////////////
 BookRevカスタマーセンター
+URL  https://guarded-harbor-58745.herokuapp.com
+E-mail info@BookRev.com
 ////////////////////////////////////////
 EOT;
-                sendMail($from, $to, $subject, $comment);
+                sendMail($from, $to, $subject, $comment,$username);
                 
                 header("Location:mypage.php"); //マイページへ
                 }
