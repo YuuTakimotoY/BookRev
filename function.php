@@ -3,11 +3,10 @@
 // ログ
 //================================
 //ログを取るか
-/*ini_set('log_errors','on');
+ini_set('log_errors','on');
 //ログの出力ファイルを指定
-ini_set('error_log','php.log');*/
-ini_set("display_errors", 'On');
-error_reporting(E_ALL);
+ini_set('error_log','php.log');
+
 //================================
 // デバッグ
 //================================

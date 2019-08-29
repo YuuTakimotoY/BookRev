@@ -30,9 +30,7 @@ if(!empty($_GET)){
     
     debug('クエリ結果の中身：'.print_r($result,true));
     
-    // パスワード照合
-    if(!empty($result) && password_verify($pass, array_shift($result))){
-      debug('パスワードがマッチしました。');
+    if(!empty($result)){
       
       //ログイン有効期限（デフォルトを１時間とする）
       $sesLimit = 60*60;
