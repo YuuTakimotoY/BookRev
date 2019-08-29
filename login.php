@@ -197,8 +197,8 @@ require('head.php');
             <div class="btn-container">
               <input type="submit" class="btn btn-mid" value="ログイン">
             </div>
-            パスワードを忘れた方は<a href="passRemindSend.php">コチラ</a>
-            ゲストログインは<a href="login.php?gest=true">こちら</a>
+            パスワードを忘れた方は<a href="passRemindSend.php">コチラ</a><br>
+            ゲストログインは<a href="login.php?gest=true">コチラ</a>
          </form>
        </div>
 
