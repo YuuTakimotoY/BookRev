@@ -170,7 +170,7 @@ require('header.php');
         </div>
         <label class="<?php if(!empty($err_msg['email'])) echo 'err'; ?>">
           Email
-          <input type="text" name="email" value="<?php echo getFormData('email'); ?>" <?php if($_SESSION(user_id) == 22) echo 'disabled' ?>>
+          <input type="text" name="email" value="<?php echo getFormData('email'); ?>" <?php if($_SESSION(user_id) == 22) echo 'readonly' ?>>
         </label>
         <div class="area-msg">
           <?php 
